@@ -28,6 +28,7 @@ const useTranslation = () => {
   };
 };
 function getNestedTranslation(language: string, keys: any) {
+  console.log({language, keys});
   // reduce nhận 2 đối số, hàm và giá trị khởi tạo
   return keys.reduce((obj: any, key: string) => {
     // console.log(obj?.[key], 'obj?.[key]')
