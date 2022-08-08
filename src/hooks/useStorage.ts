@@ -1,16 +1,16 @@
 import { useCallback, useState, useEffect } from "react";
 
-export function useLocalStorage(key: string, defaultValue: string | any) {
+export function useLocalStorage(key: string, defaultValue: string ) {
   return useStorage(key, defaultValue, localStorage);
 }
 
-export function useSessionStorage(key: string, defaultValue: string | any) {
+export function useSessionStorage(key: string, defaultValue: string ) {
   return useStorage(key, defaultValue, sessionStorage);
 }
 
 const useStorage = (
   key: string,
-  defaultValue: () => void | string,
+  defaultValue: string,
   storageObject: Storage
 ) => {
   const [language, setLanguage] = useState(() => {
@@ -18,9 +18,7 @@ const useStorage = (
     if (jsonValue != null) {
       return JSON.parse(jsonValue);
     }
-    if (typeof defaultValue === "function") {
-      return defaultValue();
-    } else {
+    else {
       return defaultValue;
     }
   });

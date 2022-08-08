@@ -10,6 +10,7 @@ const useTranslation = () => {
   );
   const translate = (key: string) => {
     const keys = key.split(".");
+    console.log(keys, 'keys')
     return (
       getNestedTranslation(language, keys) ??
       getNestedTranslation(fallbackLanguage, keys) ??
@@ -27,7 +28,9 @@ const useTranslation = () => {
   };
 };
 function getNestedTranslation(language: string, keys: any) {
+  // reduce nhận 2 đối số, hàm và giá trị khởi tạo
   return keys.reduce((obj: any, key: string) => {
+    // console.log(obj?.[key], 'obj?.[key]')
     return obj?.[key];
   }, translations[language as keyof typeof translations]);
 }
